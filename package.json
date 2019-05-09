@@ -1,0 +1,48 @@
+{
+  "name": "weather-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.16.3",
+    "axios": "^0.18.0",
+    "ip-geolocation-api-javascript-sdk": "^1.0.7",
+    "ip-geolocation-api-sdk-typescript": "^1.0.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts-ts-antd": "2.17.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts-antd start",
+    "build": "react-scripts-ts-antd build",
+    "test": "jest",
+    "eject": "react-scripts-ts-antd eject"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.10",
+    "@types/enzyme": "^3.9.1",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.13.4",
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.4",
+    "@types/reactstrap": "^8.0.0",
+    "babel-jest": "^24.7.1",
+    "babel-preset-mobx": "^2.0.0",
+    "bootstrap": "^4.3.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "enzyme-to-json": "^3.3.5",
+    "jest": "^24.7.1",
+    "mobx": "^5.9.4",
+    "mobx-react": "^5.4.3",
+    "mobx-react-lite": "^1.2.0",
+    "react-test-renderer": "^16.8.6",
+    "reactstrap": "^8.0.0",
+    "typescript": "^3.4.3"
+  }
+}
