@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API_URL = 'http://api.openweathermap.org/data/2.5'
-const API_KEY = '4f33192f189291b1ae2c499905d9da81'
+const API_KEY_CURRENT = '4f33192f189291b1ae2c499905d9da81'
 const IMG_URL = 'http://openweathermap.org/img/w';
 
 
@@ -10,14 +10,15 @@ export default class WeatherClient{
         if (!latitude || !longitude) {
             console.log('lat/lon wrong')
         }
-        const url = `${API_URL}/weather?appid=${API_KEY}&lat=${latitude}&lon=${longitude}&units=metric`;
+        const url = `${API_URL}/weather?appid=${API_KEY_CURRENT}&lat=${latitude}&lon=${longitude}&units=metric`;
         return new Promise((resolve, reject) => {
-            axios.get(url).then( response => {
-                if ( response && response.status === 200 ){
-                    const { main , icon } = response.data.weather[0];
-                    const { temp, temp_min, temp_max } = response.data.main;
-                    const { lon, lt } = response.data.coord;
-                    const { dt, name } = response.data;
+            axios.get(url).then( reponse => {
+                if ( reponse && reponse.status === 200 ){
+                    console.log(reponse)
+                    const { main , icon } = reponse.data.weather[0];
+                    const { temp, temp_min, temp_max } = reponse.data.main;
+                    const { lon, lt } = reponse.data.coord;
+                    const { dt, name } = reponse.data;
                     resolve({
                         condition : main,
                         date : new Date(dt * 1000),
@@ -38,5 +39,18 @@ export default class WeatherClient{
                 }
             }).catch( error => reject( error.message ))
         })
+    }
+    getDailyWeather(latitude : any , longitude : any) {
+        const url = `${API_URL}/forecast?appid=${API_KEY_CURRENT}&lat=${latitude}&lon=${longitude}&units=metric`;
+        if (!latitude || !longitude) {
+            console.log('lat/lon wrong')
+        }
+        return new Promise( (resolve, reject) => {
+            axios.get(url).then(reponse => {
+                if ( reponse && reponse.status === 200 ){
+                    console.log(reponse)
+                }
+            }).catch( error => reject(error.message))
+        }) 
     }
 }
