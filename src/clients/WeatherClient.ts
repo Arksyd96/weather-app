@@ -14,9 +14,8 @@ export default class WeatherClient{
         return new Promise((resolve, reject) => {
             axios.get(url).then( reponse => {
                 if ( reponse && reponse.status === 200 ){
-                    console.log(reponse)
                     const { main , icon } = reponse.data.weather[0];
-                    const { temp, temp_min, temp_max } = reponse.data.main;
+                    const { temp, temp_min, temp_max, humidity } = reponse.data.main;
                     const { lon, lt } = reponse.data.coord;
                     const { dt, name } = reponse.data;
                     resolve({
@@ -31,7 +30,8 @@ export default class WeatherClient{
                         temperature : {
                             current : temp,
                             min : temp_min,
-                            max : temp_max
+                            max : temp_max,
+                            humid : humidity
                         }
                     });
                 } else {
@@ -47,8 +47,11 @@ export default class WeatherClient{
         }
         return new Promise( (resolve, reject) => {
             axios.get(url).then(reponse => {
-                if ( reponse && reponse.status === 200 ){
-                    console.log(reponse)
+                if ( reponse && reponse.status === 200 ){                  
+                    const hourlyForecasts = reponse.data.list
+                    resolve(hourlyForecasts)
+                } else {
+                    reject('Data not found')
                 }
             }).catch( error => reject(error.message))
         }) 

@@ -9,10 +9,10 @@ const StyledTitle = styled.span({
 })
 
 
-const header = () => {
+const header = (props : any) => {
     return (
         <Header>
-            <StyledTitle>Weather</StyledTitle>
+            <StyledTitle>{props.title}</StyledTitle>
         </Header>
     )
 }

@@ -7,13 +7,22 @@ const Container = styled.div({
 	height: '100vh', width: '100vw', display: 'block'
 })
 
-class App extends React.Component<any, any>{
+class App extends React.PureComponent<any, any>{
+	state = {
+		title : ''
+	}
+	handleChildDate = (Title : string) => {
+		this.setState({
+			title : Title
+		})
+	}
+
 	render() {
 		return (
 			<Container>
-				<Header />
+				<Header title={this.state.title}/>
 				<div style={{ paddingTop: '100px' }}>
-					<WeatherDashboard />
+					<WeatherDashboard callback={this.handleChildDate}/>
 				</div>
 			</Container>
 		);
