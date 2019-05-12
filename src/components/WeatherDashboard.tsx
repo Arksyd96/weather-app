@@ -19,12 +19,6 @@ const weatherDashboard = (props : any) => {
 	})
 
 	const [ hours, setHours ] = useState([])
-	
-	const timeFormat = (date : Date) => {
-		const hour = date.getHours().toString().padStart(2, '0');
-		const minutes = date.getMinutes().toString().padEnd(2, '0');
-		return `${hour}:${minutes}`;
-	}
     
     const loadData = (pos: any) => {
 		weatherClient.getCurrentWeather(pos.latitude, pos.longitude).then((response: any) => {
@@ -35,13 +29,14 @@ const weatherDashboard = (props : any) => {
 				maxTemp: temperature.max,
 				currentTemp: temperature.current,
 				currentWeather: condition,
-				date: timeFormat(new Date(response.date)),
+				date: response.date,
 				icon : response.icon,
 				humidity : temperature.humid
 			})
 		});
 		weatherClient.getDailyWeather(pos.latitude, pos.longitude).then((response : any) => {
 			setHours(response);	
+			console.log(hours)
 		})
 	}
 
@@ -52,12 +47,9 @@ const weatherDashboard = (props : any) => {
 	props.callback(weather.location);
 
     return (
-        <div style={{ width: '50%', marginLeft: 'auto', marginRight: 'auto' }}>
+        <div style={{ width: '100%', display : 'block' }}>
             <CurrentWeather weather={weather} />
 			<HourlyWeather hours={hours}/>
-            <div style={{ backgroundColor: 'lightSteelBlue', height: '170px', textAlign: 'center' }}>
-                météo par heures
-			</div>
         </div>
     )
 }
