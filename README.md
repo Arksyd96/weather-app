@@ -1,3 +1,5 @@
 Used Create-react-app
 
-Small app that shows the weather using react.
+An app that gives you Daily/hourly weather of your current location using OpenWeatherAPI
+
+Created with React
